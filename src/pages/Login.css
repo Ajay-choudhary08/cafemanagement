@@ -5,15 +5,15 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background: linear-gradient(to right, #fbeec1, #d5b895);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.signup {
+.login{
   width: 100%;
   padding: 20px;
   display: flex;
@@ -59,8 +59,19 @@ button {
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin: 5px;
 }
-
+/* button-login{
+  width: 100%;
+  padding: 12px;
+  background-color: #a47551;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+} */
 
 button:hover {
   background-color: #6f4e37;
