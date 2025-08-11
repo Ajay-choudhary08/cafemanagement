@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import { Link } from "react-router-dom";
 import './Login.css';
 import cafeBackground from '../assets/Cafeimg/cafeBAckground.png';
 
@@ -47,10 +48,12 @@ function Login() {
         <input type="password" name='password'  placeholder="Password" value={formData.password}
             onChange={handleChange}required />
             <button type='submit' >Login</button>
-        <button type="submit">Sign Up</button>
+        <button className='button'><a href="Signup" className='signup-link'> Sign up</a></button>
+        
       </form>
     </div>
   </div>
+  
   );
 }
 

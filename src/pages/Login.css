@@ -61,17 +61,16 @@ button {
   transition: background-color 0.3s ease;
   margin: 5px;
 }
-/* button-login{
-  width: 100%;
-  padding: 12px;
-  background-color: #a47551;
+.signup-link{
+  
   color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-} */
+  text-decoration: none;
+
+
+}
+::placeholder{
+  color: #b6672a;
+}
 
 button:hover {
   background-color: #6f4e37;
