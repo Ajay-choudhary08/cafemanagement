@@ -1,13 +1,11 @@
 import React,{useState} from 'react';
-import { Link } from "react-router-dom";
 import './Signup.css';
 import cafeBackground from '../assets/Cafeimg/cafeBAckground.png';
 
 
-
+import { toast } from 'react-toastify';
 
 function Signup() {
-
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -22,10 +20,15 @@ function Signup() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    console.log('Form Data:', formData); 
-       localStorage.setItem('signupData', JSON.stringify(formData));
-    
+    e.preventDefault();
+
+    // Signup data save in localStorage
+    localStorage.setItem('signupData', JSON.stringify(formData));
+
+    // Toast message show
+    toast.success("Signup Successful! Please login now.");
+
+    //Reset form
     setFormData({
       username: '',
       email: '',
@@ -33,24 +36,44 @@ function Signup() {
     });
   };
 
-
   return (
- <div className="signup">
-  <img src={cafeBackground} alt="Cafe Background" className="background-img" />
+    <div className="signup">
+      <img src={cafeBackground} alt="Cafe Background" className="background-img" />
 
-    <div className="box">
-      <h1>Sign up</h1>
-      <form onSubmit={handleSubmit} >
-        <input type="text" name='username'   placeholder="Username" value={formData.username}
-            onChange={handleChange}required />
-        <input type="email" name='email'   placeholder="Email"value={formData.email}
-            onChange={handleChange} required />
-        <input type="password" name='password'  placeholder="Password" value={formData.password}
-            onChange={handleChange}required />
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="box">
+        <h1>Sign up</h1>
+        <form onSubmit={handleSubmit} >
+          <input 
+            type="text" 
+            name='username'   
+            placeholder="Username" 
+            value={formData.username}
+            onChange={handleChange}
+            required 
+          />
+
+          <input 
+            type="email" 
+            name='email'   
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required 
+          />
+
+          <input 
+            type="password" 
+            name='password'  
+            placeholder="Password" 
+            value={formData.password}
+            onChange={handleChange}
+            required 
+          />
+
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
     </div>
-  </div>
   );
 }
 

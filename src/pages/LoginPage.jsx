@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './Login.css';
 import cafeBackground from '../assets/Cafeimg/cafeBAckground.png';
+import { toast } from 'react-toastify';
 
 function LoginPage() {
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ 
@@ -17,14 +20,27 @@ function LoginPage() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-    console.log('Form Data:', formData); 
-    localStorage.setItem('signupData', JSON.stringify(formData));
-    
-    setFormData({
-      username: '',
-      password: ''
-    });
+    e.preventDefault();
+
+    const storedData = JSON.parse(localStorage.getItem('signupData'));
+
+    if (storedData) {
+      if (
+        storedData.username === formData.username && 
+        storedData.password === formData.password
+      ) {
+        toast.success("Login Successful ");
+
+        //Save login
+        localStorage.setItem("isLoggedIn", true);
+
+        navigate("/home");
+      } else {
+        toast.error("Invalid username or password ");
+      }
+    } else {
+      toast.warn("No user found");
+    }
   };
 
   return (
@@ -54,11 +70,14 @@ function LoginPage() {
 
           <button type="submit">Login</button>
 
-
+          {/* 👉 Signup line */}
+          <p className="signup-link">
+            Don't have an account? <Link to="/signup">Sign up</Link>
+          </p>
         </form>
-      </div>
+      </div>    
     </div>
-  );
+  ); 
 }
 
 export default LoginPage;
