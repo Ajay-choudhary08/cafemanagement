@@ -26,6 +26,11 @@ function Navbar() {
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/contact">Contact</Link></li>
+       
+        {isLoggedIn && (
+ <li><Link to="/admin">Admin</Link></li>
+)}
+
 
         {/* 👉 Conditional rendering based on login */}
         {!isLoggedIn ? (
